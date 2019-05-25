@@ -58,7 +58,8 @@ class RegisterScreenState extends State<RegisterScreen> {
                   labelText: "Name", icon: Icon(Icons.account_circle)),
               validator: (value) {
                 List<String> name = value.split(" ");
-                if (name.length != 2) return "Name is not valid";
+                if (name.length != 2 || name[0] == "" || name[1] == "")
+                  return "Name is not valid";
               },
             ),
             TextFormField(
@@ -102,8 +103,7 @@ class RegisterScreenState extends State<RegisterScreen> {
                           context: context,
                           builder: (context) {
                             return AlertDialog(
-                              content: Text(
-                                  'Userid is already exist'),
+                              content: Text('Userid is already exist'),
                             );
                           });
                     } else {
